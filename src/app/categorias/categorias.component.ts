@@ -26,19 +26,37 @@ export class CategoriasComponent {
 
   agregarCategoria() {
     const posId = this.categorias.findIndex((cat) => cat.id == this.categoria.id);
-    if (this.categoria.id>0 || posId!=-1) {
-      alert("vas a agregar la categoria con nombre " + this.categoria.nombre);
-      this.categorias.push(this.categoria);
+    if (this.categoria.id>0 && posId==-1) {
+        alert('vas a agregar la categoria con nombre ' + this.categoria.nombre);
+        const categoriaSinVincular = {
+            id: this.categoria.id,
+            nombre: this.categoria.nombre,
+            descripcion: this.categoria.descripcion,
+        }
+        this.categorias.push(categoriaSinVincular);
     } else {
       alert("Error: verifica tus datos")
       console.log(this.categoria.nombre)
     }
   }
-  seleccionarCategoria() {}
+
+  seleccionarCategoria(categoriaSeleccionada: {id: number, nombre: string, descripcion: string}) {
+    this.categoria.id = categoriaSeleccionada.id;
+    this.categoria.nombre = categoriaSeleccionada.nombre;
+    this.categoria.descripcion = categoriaSeleccionada.descripcion;
+
+  }
+
   eliminarCategoria(id: number) {
     alert("Eliminar categoria con id: " + id + " :p")
     const posId = this.categorias.findIndex((categoria) => categoria.id == id);
     this.categorias.splice(posId, 1);
   }
-  actualizarCategoria() {}
+
+  actualizarCategoria() {
+    const idActualizar = this.categorias.findIndex((cat) => cat.id == this.categoria.id);
+    this.categorias[idActualizar].id = this.categoria.id;
+    this.categorias[idActualizar].nombre = this.categoria.nombre;
+    this.categorias[idActualizar].descripcion = this.categoria.descripcion;
+  }
 }

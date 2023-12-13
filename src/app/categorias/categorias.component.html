@@ -879,7 +879,7 @@
                   <div class="card-footer">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <button type="button" class="btn btn-success"  (click)="agregarCategoria();">Guardar</button>&nbsp;
-                    <button type="button" class="btn btn-primary">Actualizar</button>
+                    <button type="button" class="btn btn-primary" (click)="actualizarCategoria()">Actualizar</button>
                     </div>
                   </div>
                 </form>
@@ -925,7 +925,7 @@
                         <td> {{ categoria.descripcion }} </td>
                         <td>
                           <div class="d-flex justify-content-center align-items-center">
-                            <button type="button" class="btn btn-primary btn-block mt-2" (click)="seleccionarCategoria();" >Editar</button>&nbsp;
+                            <button type="button" class="btn btn-primary btn-block mt-2" (click)="seleccionarCategoria(categoria);" >Seleccionar</button>&nbsp;
                             <button type="button" class="btn btn-danger btn-block" (click)="eliminarCategoria(categoria.id);" >Eliminar</button>
                           </div>
                         </td>
